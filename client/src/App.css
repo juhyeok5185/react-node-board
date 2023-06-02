@@ -1,0 +1,200 @@
+/* layout */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+li {
+  list-style-type: none;
+  border: 1px solid black;
+  width: 15px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 0.5px;
+  cursor: pointer;
+}
+.wrapper {
+  flex: 1;
+}
+.header {
+  height: 100px;
+}
+article {
+  flex: 1;
+  margin: 0 80px;
+}
+.footer {
+  height: 100px;
+}
+
+/* headerForm */
+.header-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin: 0 80px;
+  border-bottom: 0.1px solid black;
+}
+
+.header-logo {
+  width: 15%;
+  cursor: pointer;
+}
+
+.logout {
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  background-color: blue;
+  border-radius: 10px;
+  border: 1px solid blue;
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* footerForm */
+.footer-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin: 0 80px;
+  border-top: 0.1px solid black;
+}
+
+.footer-logo {
+  width: 15%;
+}
+
+/* article */
+.article-area {
+  width: 100%;
+  min-height: 450px;
+  margin-top: 15px;
+}
+
+/* loginform */
+.login-input {
+  margin-left: 450px;
+  margin-top: 50px;
+  width: 300px;
+  height: 50px;
+  background-color: rgb(238, 245, 210);
+  border: white;
+  border-radius: 5px;
+}
+
+.login-button {
+  position: absolute;
+  top: 380px;
+  left: 530px;
+  width: 140px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+.join-button {
+  position: absolute;
+  top: 380px;
+  left: 700px;
+  width: 140px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+/* ListForm */
+.board-table {
+  margin-left: 15%;
+  width: 70%;
+  text-align: center;
+}
+
+.board-table th:nth-child(1) {
+  width: 20%;
+}
+
+.board-table th:nth-child(2) {
+  width: 60%;
+  text-align: left;
+}
+
+.board-table th:nth-child(3) {
+  width: 20%;
+}
+.board-table td:nth-child(2) {
+  text-align: left;
+}
+.board-table td {
+  border-bottom: 1px solid rgb(133, 137, 178);
+  height: 30px;
+}
+
+.suc-join{
+  position: absolute;
+  top: 470px;
+  left: 600px;
+  width: 140px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+.join {
+  min-height: 500px;
+}
+
+.write-btn{
+  cursor: pointer;
+  position: absolute;
+  top: 510px;
+  right: 260px;
+  width: 80px;
+  height: 40px;
+  background-color: yellow;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+.content {
+  width: 40%;
+  height: 200px;
+}
+
+.write {right: 335px;
+  top: 490px;
+}
+.pagination {
+  position: absolute;
+  top: 500px;
+  right: 658px;
+}
+
+.pagination li {
+  list-style-type: none;
+  border: 1px solid black;
+  width: 15px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 0.5px;
+  cursor: pointer;
+  background-color: white; /* 기본 배경색 */
+  color: black; /* 기본 글자색 */
+}
+
+.pagination li.active {
+  background-color: blue; /* 활성화된 배경색 */
+  color: white; /* 활성화된 글자색 */
+}
+
+.content {
+  height: 200px;
+}
