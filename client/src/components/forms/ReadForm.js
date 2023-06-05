@@ -60,16 +60,56 @@ const ReadForm = () => {
     }
   };
 
+  const clickDeleteComment = async (commentno) => {
+    try {
+      const response = await axios.post(`/api/commentDelete?commentno=${commentno}`);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const clickDeleteBoard = async (boardno) => {
+    console.log(boardno);
+    try {
+      const response = await axios.post(`/api/boardDelete?boardno=${boardno}`);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const clickUpdateComment = async (commentValue, commentno) => {
+    console.log(commentValue);
+    console.log(commentno);
+    try {
+      const response = await axios.post("/api/updateComment", {
+        comment: commentValue,
+        commentno: commentno,
+      });
+      alert("수정이 완료되었습니다.");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="article-area">
       {board.length > 0 ? (
         <>
-          <input type="hidden" value={board[0].boardno}></input>
-          <div>{board[0].writer}</div>
+          <textarea value={board[0].title}></textarea>
           <hr></hr>
-          <div>{board[0].title}</div>
-          <hr></hr>
-          <div className="content">{board[0].content}</div>
+          <textarea className="content" value={board[0].content}></textarea>
+          <div>
+            <button>수정</button>
+            <button
+              onClick={() => {
+                clickDeleteBoard(board[0].boardno);
+              }}
+            >
+              삭제
+            </button>
+          </div>
           <hr></hr>
           <form onSubmit={handleSubmit}>
             <input value={comment} onChange={(e) => setComment(e.target.value)} placeholder="댓글을 작성해주세요"></input>
@@ -83,10 +123,21 @@ const ReadForm = () => {
       {readComment.map((c) => (
         <div key={c.commentno}>
           <div>
-            {c.writer}| {c.comment}
-          </div>
-          <div>
-            <input type="hidden" value={c.commentno}></input>
+            <input
+              type="text"
+              value={c.comment}
+              onChange={(e) => {
+                const updatedComments = readComment.map((comment) => {
+                  if (comment.commentno === c.commentno) {
+                    return { ...comment, comment: e.target.value };
+                  }
+                  return comment;
+                });
+                setReadComment(updatedComments);
+              }}
+            />{" "}
+            <button onClick={() => clickUpdateComment(c.comment, c.commentno)}>수정</button>
+            <button onClick={() => clickDeleteComment(c.commentno)}>삭제</button>
           </div>
         </div>
       ))}

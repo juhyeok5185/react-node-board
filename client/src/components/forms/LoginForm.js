@@ -19,6 +19,7 @@ const LoginForm = () => {
       .then((response) => {
         const token = response.data.token;
         localStorage.setItem("token", token);
+        window.location.reload();
         navigate("/list");
       })
       .catch((error) => {

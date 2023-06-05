@@ -155,3 +155,55 @@ app.get("/api/pagination", (req, res) => {
     }
   });
 });
+
+app.post("/api/commentDelete", (req, res) => {
+  const { commentno } = req.query;
+
+  const query = `DELETE FROM comment WHERE commentno = ?;`;
+  connection.query(query, [commentno], (error, results) => {
+    if (error) {
+      console.error("MySQL 쿼리 오류:", error);
+      res.status(500).json({ error: "데이터를 삽입하는 중에 오류가 발생했습니다." });
+    } else {
+      console.log("데이터가 성공적으로 삽입되었습니다.");
+      res.json({ message: "삭제가 완료되었습니다." });
+    }
+  });
+});
+
+app.post("/api/boardDelete", (req, res) => {
+  const { boardno } = req.query;
+  let query = `DELETE FROM comment where boardno=?;`;
+  connection.query(query, [boardno], (error, results) => {
+    if (error) {
+      console.error("MySQL 쿼리 오류:", error);
+    } else {
+      console.log("데이터가 성공적으로 삭제되었습니다.");
+    }
+  });
+
+  query = `DELETE FROM board WHERE boardno = ?;`;
+  connection.query(query, [boardno], (error, results) => {
+    if (error) {
+      console.error("MySQL 쿼리 오류:", error);
+      res.status(500).json({ error: "데이터를 삭제하는 중에 오류가 발생했습니다." });
+    } else {
+      console.log("데이터가 성공적으로 삭제되었습니다.");
+      res.json({ message: "삭제가 완료되었습니다." });
+    }
+  });
+});
+
+app.post("/api/updateComment", (req, res) => {
+  const { comment, commentno } = req.body;
+  let query = `update comment set comment = ? where commentno = ?;`;
+  connection.query(query, [comment, commentno], (error, results) => {
+    if (error) {
+      console.error("MySQL 쿼리 오류:", error);
+      res.status(500).json({ error: "업데이트 실패" });
+    } else {
+      console.log("데이터가 성공적으로 업데이트.");
+      res.json({ message: "변경이 완료되었습니다.." });
+    }
+  });
+});

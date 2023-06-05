@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import logo from "../../image/logo.png";
 
 const HeaderForm = () => {
+  console.log(localStorage.getItem("token"));
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";

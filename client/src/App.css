@@ -175,7 +175,7 @@ article {
 .pagination {
   position: absolute;
   top: 500px;
-  right: 658px;
+  right: 580px;
 }
 
 .pagination li {
@@ -197,4 +197,8 @@ article {
 
 .content {
   height: 200px;
+}
+
+.pagination > .prev-btn {
+  width: 50px;
 }

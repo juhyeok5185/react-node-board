@@ -59,6 +59,9 @@ const ListForm = () => {
   };
 
   const handlePageClick = (pageNumber) => {
+    if (pageNumber === 0) {
+      return;
+    }
     setPage(pageNumber);
   };
 
@@ -86,7 +89,9 @@ const ListForm = () => {
       </table>
       <div>
         <ul className="pagination">
-          {prev > 0 && <li onClick={() => handlePageClick(prev)}>Prev</li>}
+          <li className="prev-btn" onClick={() => handlePageClick(prev)}>
+            Prev
+          </li>
           {Array.from({ length: last - start + 1 }, (_, index) => {
             const pageNumber = start + index;
             return (
@@ -95,7 +100,9 @@ const ListForm = () => {
               </li>
             );
           })}
-          {next < totalPage && <li onClick={() => handlePageClick(next)}>Next</li>}
+          <li className="prev-btn" onClick={() => handlePageClick(next)}>
+            Next
+          </li>
         </ul>
       </div>
       <button className="write-btn" onClick={() => navigate("/write")}>
