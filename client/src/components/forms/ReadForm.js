@@ -73,15 +73,13 @@ const ReadForm = () => {
     console.log(boardno);
     try {
       const response = await axios.post(`/api/boardDelete?boardno=${boardno}`);
-      window.location.reload();
+      window.location.href = "/list";
     } catch (error) {
       console.error(error);
     }
   };
 
   const clickUpdateComment = async (commentValue, commentno) => {
-    console.log(commentValue);
-    console.log(commentno);
     try {
       const response = await axios.post("/api/updateComment", {
         comment: commentValue,
@@ -97,11 +95,10 @@ const ReadForm = () => {
     <div className="article-area">
       {board.length > 0 ? (
         <>
-          <textarea value={board[0].title}></textarea>
+          <div>{board[0].title}</div>
           <hr></hr>
-          <textarea className="content" value={board[0].content}></textarea>
+          <div className="content">{board[0].content}</div>
           <div>
-            <button>수정</button>
             <button
               onClick={() => {
                 clickDeleteBoard(board[0].boardno);
